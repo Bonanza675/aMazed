@@ -1,0 +1,2 @@
+# aMazed
+Escape room code
