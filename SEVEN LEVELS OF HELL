@@ -1,0 +1,267 @@
+import pygame
+from pygame.constants import KEYDOWN, K_ESCAPE, K_m
+from pygame.locals import *
+import time
+
+def main():
+	
+	pygame.init()
+	
+	window = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+
+	pygame.display.set_caption("aMazed Oy")
+
+	kirjaimet = [K_a, K_b, K_c, K_d, K_e, K_f, K_g, K_h, K_i, K_j, K_k, K_l, K_m, K_n, K_o, K_p, K_q, K_r, K_s, K_t, K_u, K_v, K_w, K_x, K_y, K_z, K_SPACE]
+
+	leveys = 58
+	korkeus = 80
+	x_0, y_0 = pygame.display.get_surface().get_size()
+	vari = (0, 0, 0)	#kirjaimen vari
+
+	font3 = pygame.font.SysFont('franklingothicbook', 72)
+	teksti_suomi_kuva = font3.render('KUKA ON KILTTI POIKA?', True, (245, 245, 245))
+	teksti_enkku_kuva = font3.render('WHO IS A GOOD BOY?', True, (245,245,245))
+
+	eka = ""
+	font1 = pygame.font.SysFont('helvetica', 84)
+	eka_kuva = font3.render(eka, True, vari, (255,255,255))
+
+	toka = ""
+	toka_kuva = font3.render(toka, True, vari, (255,255,255))
+
+	kolmas = ""
+	kolmas_kuva = font3.render(kolmas, True, vari, (255,255,255))
+
+	neljas = ""
+	neljas_kuva = font3.render(eka, True, vari, (255,255,255))
+
+	viides = ""
+	viides_kuva = font3.render(eka, True, vari, (255,255,255))
+
+	"""kuudes = ""
+	kuudes_kuva = font3.render(eka, True, vari, (255,255,255))
+
+	seiska = ""
+	seiska_kuva = font3.render(eka, True, vari, (255,255,255))
+
+	kasi = ""
+	kasi_kuva = font3.render(eka, True, vari, (255,255,255))
+
+	ysi = ""
+	ysi_kuva = font3.render(eka, True, vari, (255,255,255))
+
+	kymppi = ""
+	kymppi_kuva = font3.render(eka, True, vari, (255,255,255)) """
+
+	paikka = 1
+	run = True
+	sana = ""
+	voitto = "PROTOKOLLA KAYNNISTETTY"
+	win = "PROTOCOL INITIATED"
+	oikein = False
+	vaarin = False
+	VERA = False
+
+	while run:
+		pygame.time.delay(100)
+	
+		for event in pygame.event.get():
+			if event.type == pygame.QUIT: run = False
+			if(event.type == KEYDOWN and event.key == K_ESCAPE): run = False
+		
+			if event.type == KEYDOWN:
+				if event.key == K_BACKSPACE:
+					"""if len(kymppi)>0:
+						kymppi = kymppi[:-1]
+					
+					elif len(ysi)>0:
+						ysi = ysi[:-1]
+				
+					elif len(kasi)>0:
+						kasi = kasi[:-1]
+				
+					elif len(seiska)>0:
+						seiska = seiska[:-1]
+				
+					elif len(kuudes)>0:
+						kuudes = kuudes[:-1] """
+				
+					if len(viides) > 0:
+						viides = viides[:-1]
+				
+					elif len(neljas) > 0:
+						neljas = neljas[:-1]
+				
+					elif len(kolmas) > 0:
+						kolmas = kolmas[:-1]
+				
+					elif len(toka) > 0:
+						toka = toka[:-1]
+				
+					elif len(eka) > 0:
+						eka = eka[:-1]
+				
+					if paikka > 1: paikka -= 1
+					if len(sana) > 0: sana = sana[:-1]
+				
+				elif(event.key in kirjaimet and paikka == 1 and len(eka) == 0):  #Jos painettiin kirjainta niin tama lisaa sen oikeelle paikalle
+					eka += event.unicode.upper()
+					sana += event.unicode.upper()
+					paikka += 1
+				
+				elif(event.key in kirjaimet and paikka == 2):
+					toka += event.unicode.upper()
+					sana += event.unicode.upper()
+					paikka += 1
+				
+				elif(event.key in kirjaimet and paikka == 3):
+					kolmas += event.unicode.upper()
+					sana += event.unicode.upper()
+					paikka += 1
+				
+				elif(event.key in kirjaimet and paikka == 4):
+					neljas += event.unicode.upper()
+					sana += event.unicode.upper()
+					paikka += 1
+				
+				elif(event.key in kirjaimet and paikka == 5):
+					viides += event.unicode.upper()
+					sana += event.unicode.upper()
+					paikka += 1
+				
+				"""elif(event.key in kirjaimet and paikka == 6):
+					kuudes += event.unicode.upper()
+					sana += event.unicode.upper()
+					paikka += 1
+				
+				elif(event.key in kirjaimet and paikka == 7):
+					seiska += event.unicode.upper()
+					sana += event.unicode.upper()
+					paikka += 1
+				
+				elif(event.key in kirjaimet and paikka == 8):
+					kasi += event.unicode.upper()
+					sana += event.unicode.upper()
+					paikka += 1
+				
+				elif(event.key in kirjaimet and paikka == 9):
+					ysi += event.unicode.upper()
+					sana += event.unicode.upper()
+					paikka += 1
+				
+				elif(event.key in kirjaimet and paikka == 10):
+					kymppi += event.unicode.upper()
+					sana += event.unicode.upper()
+					paikka += 1"""
+				
+			eka_kuva = font3.render(eka, True, vari)
+			toka_kuva = font3.render(toka, True, vari)
+			kolmas_kuva = font3.render(kolmas, True, vari)
+			neljas_kuva = font3.render(neljas, True, vari)
+			viides_kuva = font3.render(viides, True, vari)
+			"""kuudes_kuva = font3.render(kuudes, True, vari)
+			seiska_kuva = font3.render(seiska, True, vari)
+			kasi_kuva = font3.render(kasi, True, vari)
+			ysi_kuva = font3.render(ysi, True, vari)
+			kymppi_kuva = font3.render(kymppi, True, vari)"""
+			
+	
+		
+		window.fill((0, 0, 0))
+	
+		for i in range(5): #Piirtaa valkoset ruudut
+			pygame.draw.rect(window, (255, 255, 255), (i*100+500, y_0/2, leveys, korkeus))
+		
+	
+		window.blit(teksti_suomi_kuva, (400, 300))
+		window.blit(teksti_enkku_kuva, (400, 400))
+	
+		if len(sana) < 5:
+			window.blit(eka_kuva, (500, y_0/2))
+			window.blit(toka_kuva, (600, y_0/2))
+			window.blit(kolmas_kuva, (700, y_0/2))
+			window.blit(neljas_kuva, (800, y_0/2))
+			window.blit(viides_kuva, (900, y_0/2))
+			"""window.blit(kuudes_kuva, (800, y_0/2))
+			window.blit(seiska_kuva, (900, y_0/2))
+			window.blit(kasi_kuva, (1000, y_0/2))
+			window.blit(ysi_kuva, (1100, y_0/2))
+			window.blit(kymppi_kuva, (1200, y_0/2))"""
+		elif sana == "DANTE":
+			oikein = True
+		elif sana == "VERA KOVAL":
+			window.fill((255, 0,0))
+			window.blit(font1.render("HOW DARE YOU SPEAK HER NAME?!", True, (100,0,0)), (500,500))
+			sana=""
+			paikka = 1
+			VERA = True
+			eka = ""
+			toka = ""
+			kolmas = ""
+			neljas = ""
+			viides = ""
+			"""kuudes = ""
+			seiska = ""
+			kasi = ""
+			ysi = ""
+			kymppi = "" """
+		else:
+			eka = ""
+			toka = ""
+			kolmas = ""
+			neljas = ""
+			viides = ""
+			"""kuudes = ""
+			seiska = ""
+			kasi = ""
+			ysi = ""
+			kymppi = "" """
+			paikka = 1
+			sana = ""
+			vaarin = True
+			for i in range(5):
+				pygame.draw.rect(window, (255, 0, 0), (i*100+500, y_0/2, leveys, korkeus))
+		
+	
+	
+		if time.time() % 1 > 0.5:
+			if paikka == 1:
+				pygame.draw.rect(window, (0, 0, 0), (525, y_0/2+10, 3, 70))
+			elif paikka == 2:
+				pygame.draw.rect(window, (0, 0, 0), (625, y_0/2+10, 3, 70))
+			elif paikka == 3:
+				pygame.draw.rect(window, (0, 0, 0), (725, y_0/2+10, 3, 70))
+			elif paikka == 4:
+				pygame.draw.rect(window, (0, 0, 0), (825, y_0/2+10, 3, 70))
+			elif paikka == 5:
+				pygame.draw.rect(window, (0, 0, 0), (925, y_0/2+10, 3, 70))
+			"""elif paikka == 6:
+				pygame.draw.rect(window, (0, 0, 0), (825, y_0/2+10, 3, 70))
+			elif paikka == 7:
+				pygame.draw.rect(window, (0, 0, 0), (925, y_0/2+10, 3, 70))
+			elif paikka == 8:
+				pygame.draw.rect(window, (0, 0, 0), (1025, y_0/2+10, 3, 70))
+			elif paikka == 9:
+				pygame.draw.rect(window, (0, 0, 0), (1125, y_0/2+10, 3, 70))
+			elif paikka == 10:
+				pygame.draw.rect(window, (0, 0, 0), (1225, y_0/2+10, 3, 70)) """
+		
+	
+	
+		if oikein:
+			window.fill((0, 0, 0))
+			voitto_kuva = font3.render(voitto, True, vari, (255,255,255))
+			win_kuva = font3.render(win, True, vari, (255,255,255))
+			if time.time() % 2 > 0.7:
+				window.blit(voitto_kuva, (1000, 500))
+				window.blit(win_kuva, (1000, 700))
+			
+			
+	
+		pygame.display.update()
+		if vaarin or VERA:
+			pygame.time.delay(300)
+			vaarin = False
+			VERA = False
+	pygame.quit()
+if __name__ == '__main__': main()
